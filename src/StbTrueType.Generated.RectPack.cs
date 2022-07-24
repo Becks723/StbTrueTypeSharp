@@ -44,7 +44,7 @@ namespace StbTrueTypeSharp
 			int padding, void* alloc_context)
 		{
 			var context = (stbrp_context*)CRuntime.malloc((ulong)sizeof(stbrp_context));
-			var num_nodes = pw - padding;
+			var num_nodes = pw;
 			var nodes = (stbrp_node*)CRuntime.malloc((ulong)(sizeof(stbrp_node) * num_nodes));
 			if (context == null || nodes == null)
 			{
@@ -66,7 +66,7 @@ namespace StbTrueTypeSharp
 			spc.h_oversample = 1;
 			spc.v_oversample = 1;
 			spc.skip_missing = 0;
-			stbrp_init_target(context, pw - padding, ph - padding, nodes, num_nodes);
+			stbrp_init_target(context, pw, ph, nodes, num_nodes);
 			if (pixels != null)
 				CRuntime.memset(pixels, 0, (ulong)(pw * ph));
 			return 1;
